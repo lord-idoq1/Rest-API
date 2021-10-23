@@ -571,17 +571,16 @@ router.get('/stalk/ig', async(req, res, next) => {
   const query = req.query.query;
   if(!apikey) return res.json(loghandler.notparam)
   if(!query) return res.json(loghandler.notquery)
-  
-  if(listkey.includes(apikey)){
-  fetch(encodeURI(`https://mhankbarbar.herokuapp.com/api/stalk?username=${query}`))
-  .then(response => response.json())
-        .then(hasil => {
 
-        var result = hasil;
+  if(!username) return res.json(loghandler.notusername) 
+  if(listkey.includes(apikey)){
+  igStalk(username)
+    .then(data => {
+        var result = data;
              res.json({
-                 status : true,
-                 creator : `${creator}`,
-                 result
+           status : true,
+                 creator : `${creator}`,    
+                 result                              
              })
          })
          .catch(e => {
