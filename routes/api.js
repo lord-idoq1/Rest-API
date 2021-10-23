@@ -175,20 +175,7 @@ Akhir Pesan Error
 */
 
 router.use(favicon(__path + "/views/favicon.ico"));
-var h = new Date().getHours();
-
-if (h >= 4 && h < 10) {
-  var listkey = 'xfarkey'
-  }
-  if (h >= 11 && h < 13) { 
-  var listkey = 'xfakey'
-  }
-  if (h >= 14 && h < 15) {
-  var listkey = 'xfarkey'
-  }
-  if (h >= 15 || h < 4) { 
-  var listkey = 'XFarApi'
-  }
+var listkey = ["sayahafiz"]
 
 router.post("/apikey", async (req, res, next) => {
   const key = req.query.key;
