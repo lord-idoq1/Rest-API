@@ -567,7 +567,8 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 })
 
 router.get('/stalk/ig', async(req, res, next) => {
-  const apikey = req.query.apikey;
+ const username = req.query.username;
+ const apikey = req.query.apikey;
   if(!apikey) return res.json(loghandler.notparam)
 
   if(!username) return res.json(loghandler.notusername) 
