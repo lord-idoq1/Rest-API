@@ -513,8 +513,8 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 })
 
 router.get('/download/fb', async (req, res, next) => {
-        var Apikey = req.query.apikey,
-            url = req.query.url
+        url = req.query.url
+     var Apikey = req.query.apikey,
             
 	if(!Apikey) return res.json(loghandler.notparam)
 	if(listkey.includes(Apikey)){
@@ -539,8 +539,8 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 });
 
 router.get('/stalk/tiktok', async (req, res, next) => {
-    var Apikey = req.query.apikey,
         username = req.query.username
+        var Apikey = req.query.apikey,
 
 	if(!Apikey) return res.json(loghandler.notparam)
 	if(listkey.includes(Apikey)){
@@ -604,12 +604,15 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tiktokdownload
              status : true,
                  creator : `${creator}`,    
                  result                 
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/socialmedia/tiktoknowm', async (req, res, next) => {    
         url = req.query.url
@@ -626,16 +629,19 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tiktoknowm?url
             status : true,
                  creator : `${creator}`,  
                  result     
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/socialmedia/tiktokwm', async (req, res, next) => {    
         url = req.query.url
- const apikey = req.query.apikey;
+       const apikey = req.query.apikey;
     
     if(!apikey) return res.json(loghandler.notparam)
     if(listkey.includes(apikey)){	
@@ -648,16 +654,19 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tiktokwithwm?u
         status : true,
                  creator : `${creator}`, 
                  result                     
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/socialmedia/ddtik', async (req, res, next) => {   
         url = req.query.url
-const apikey = req.query.apikey;
+        const apikey = req.query.apikey;
     
     if(!apikey) return res.json(loghandler.notparam)
     if(listkey.includes(apikey)){
@@ -670,16 +679,19 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/dddtik?url=${u
           status : true,
                  creator : `${creator}`,
                  result                                 
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/ig/stalk', async (req, res, next) => {   
         username = req.query.username
-const apikey = req.query.apikey;
+        const apikey = req.query.apikey;
  if(!apikey) return res.json(loghandler.notparam)
 
   if(!username) return res.json(loghandler.notusername) 
@@ -692,16 +704,19 @@ fetch(encodeURI(`https://hardianto-chan.herokuapp.com/api//igstalk?username=${us
              status : true,
                  creator : `${creator}`,
                  result
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+            })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+}) 
 
 router.get('/socialmedia/ttmate', async (req, res, next) => {    
         url = req.query.url
-const apikey = req.query.apikey;
+       const apikey = req.query.apikey;
 	 if(!apikey) return res.json(loghandler.notparam)
 
   if(listkey.includes(apikey)){
@@ -714,12 +729,15 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tikmate?url=${
          status : true,
                  creator : `${creator}`,  
                  result                  
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/socialmedia/ttsave', async (req, res, next) => {   
         url = req.query.url
@@ -736,20 +754,22 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/ttsave?url=${u
            status : true,
                  creator : `${creator}`,   
                  result                          
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/socialmedia/snaptik', async (req, res, next) => {    
         url = req.query.url
 	 const apikey = req.query.apikey;
     
     if(!apikey) return res.json(loghandler.notparam)
-    if(listkey.includes(apikey)){
-	 
+    if(listkey.includes(apikey)){	 
      if (!url) return res.json(loghandler.noturl)
 fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/nguteksnaptik?url=${url}&apikey=ojan`))
         .then(response => response.json())
@@ -759,12 +779,15 @@ fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/nguteksnaptik?
              status : true,
                  creator : `${creator}`,
                  result      
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});	
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/tiktok/download', async(req, res, next) => {
   const url = req.query.url;
@@ -804,19 +827,22 @@ router.get('/twitter', async(req, res, next) => {
            status : true,
                  creator : `${creator}`,    
                  result                              
-             });
-  } else {
-
-    res.sendFile(__path + '/views/apikey-not-found.html');
-  }
-});
+             })
+         })
+         .catch(e => {
+         	res.json(loghandler.error)
+})
+} else {
+res.sendFile(__path + '/views/apikey-not-found.html');
+}
+})
 
 router.get('/stalk/github', async(req, res, next) => {
- var Apikey = req.query.apikey
+      const username = req.query.username
+      var Apikey = req.query.apikey
 
 		if (!Apikey) return res.json(loghandler.notparam)
 		if (listkey.includes(Apikey)){
-   const username = req.query.username;
   
   if(!username) return res.json(loghandler.notusername)
   fetch(encodeURI(`https://api.github.com/users/${username}`))
