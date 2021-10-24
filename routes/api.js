@@ -53,12 +53,6 @@ var {
 } = require("./../lib/utils/ig");
 
 var {
-  ssstik,
-  keeptiktok,
-  tiktokdownload
-} = require("./../lib/tiktokdl.js");
-
-var {
   ytDonlodMp3,
   ytDonlodMp4,
   ytPlayMp3,
@@ -820,30 +814,6 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 }
 })
 
-router.get('/tiktok/sstik', async(req, res, next) => {
-  const url = req.query.url;
- const apikey = req.query.apikey;
-  if(!apikey) return res.json(loghandler.notparam)
-
-  if(!url) return res.json(loghandler.noturl) 
-  if(listkey.includes(apikey)){
-  ssstik(url)
-    .then(data => {
-        var result = data;
-             res.json({
-           status : true,
-                 creator : `${creator}`,    
-                 result                              
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.sendFile(__path + '/views/apikey-not-found.html');
-}
-})
-
 router.get('/twitter', async(req, res, next) => {
   const url = req.query.url;
  const apikey = req.query.apikey;
@@ -852,30 +822,6 @@ router.get('/twitter', async(req, res, next) => {
   if(!url) return res.json(loghandler.noturl) 
   if(listkey.includes(apikey)){
   twitterDown(url)
-    .then(data => {
-        var result = data;
-             res.json({
-           status : true,
-                 creator : `${creator}`,    
-                 result                              
-             })
-         })
-         .catch(e => {
-         	res.json(loghandler.error)
-})
-} else {
-res.sendFile(__path + '/views/apikey-not-found.html');
-}
-})
-
-router.get('/tiktok/keep', async(req, res, next) => {
-  const url = req.query.url;
- const apikey = req.query.apikey;
-  if(!apikey) return res.json(loghandler.notparam)
-
-  if(!url) return res.json(loghandler.noturl) 
-  if(listkey.includes(apikey)){
-  keeptiktok(url)
     .then(data => {
         var result = data;
              res.json({
