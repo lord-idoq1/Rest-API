@@ -48,7 +48,7 @@ var {
 var {
   igStalk,
   igDownload,
-  tiktokDown,
+  tiktokDown
 } = require("./../lib/utils/ig");
 
 var {
@@ -598,7 +598,7 @@ router.get('/tiktok/download', async(req, res, next) => {
 
   if(!url) return res.json(loghandler.noturl) 
   if(listkey.includes(apikey)){
-  tiktokDown(username)
+  tiktokDown(url)
     .then(data => {
         var result = data;
              res.json({
