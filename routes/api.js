@@ -513,7 +513,6 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 })
 
 router.get('/download/fb', async (req, res, next) => {
-
         var Apikey = req.query.apikey,
             url = req.query.url
             
@@ -546,8 +545,6 @@ router.get('/stalk/tiktok', async (req, res, next) => {
 	if(!Apikey) return res.json(loghandler.notparam)
 	if(listkey.includes(Apikey)){
     if (!username) return res.json(loghandler.notusername)
-
-
     TikTokScraper.getUserProfileInfo(username)
         .then(user => {
             res.json({
@@ -598,7 +595,6 @@ router.get('/socialmedia/tiktokdl', async (req, res, next) => {
     
     if(!apikey) return res.json(loghandler.notparam)
     if(listkey.includes(apikey)){
-  
      if (!url) return res.json(loghandler.noturl)
 fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tiktokdownloader?url=${url}&apikey=ojan`))
         .then(response => response.json())
@@ -644,8 +640,7 @@ router.get('/socialmedia/tiktokwm', async (req, res, next) => {
  const apikey = req.query.apikey;
     
     if(!apikey) return res.json(loghandler.notparam)
-    if(listkey.includes(apikey)){
-	
+    if(listkey.includes(apikey)){	
      if (!url) return res.json(loghandler.noturl)
 fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tiktokwithwm?url=${url}&apikey=ojan`))
         .then(response => response.json())
@@ -691,12 +686,11 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 })
 router.get('/ig/stalk', async (req, res, next) => {   
         username = req.query.username
+const apikey = req.query.apikey;
  if(!apikey) return res.json(loghandler.notparam)
 
   if(!username) return res.json(loghandler.notusername) 
   if(listkey.includes(apikey)){
-	
-     if (!username) return res.json(loghandler.notusername)
 fetch(encodeURI(`https://hardianto-chan.herokuapp.com/api//igstalk?username=${username}&apikey=hardianto`))
         .then(response => response.json())
         .then(data => {
@@ -717,11 +711,10 @@ res.sendFile(__path + '/views/apikey-not-found.html');
 
 router.get('/socialmedia/ttmate', async (req, res, next) => {    
         url = req.query.url
+const apikey = req.query.apikey;
 	 if(!apikey) return res.json(loghandler.notparam)
 
-  if(!username) return res.json(loghandler.notusername) 
   if(listkey.includes(apikey)){
-  
      if (!url) return res.json(loghandler.noturl)
 fetch(encodeURI(`https://dapuhy-api.herokuapp.com/api/socialmedia/tikmate?url=${url}&apikey=ojan`))
         .then(response => response.json())
@@ -846,8 +839,6 @@ router.get('/stalk/github', async(req, res, next) => {
    const username = req.query.username;
   
   if(!username) return res.json(loghandler.notusername)
-  
-  
   fetch(encodeURI(`https://api.github.com/users/${username}`))
         .then(response => response.json())
         .then(data => {
